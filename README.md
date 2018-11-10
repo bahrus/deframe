@@ -18,7 +18,11 @@ Consumers of deframed web components need not reference this library.  Only web 
 
 And the extra nice thing:  These web components can be tested by opening them directly in a browser individually!  I think this kind of workflow will feel quite natural to a developer not poisoned by the Stockholm Syndrom afflictng the web community, where everyone wears red RAWA hats React And Webpack are Awesome.  
 
-<iframe width="1127" height="634" src="https://www.youtube.com/embed/JC3jlCrsYYI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=JC3jlCrsYYI
+" target="_blank"><img src="http://img.youtube.com/vi/JC3jlCrsYYI/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+
 
 If this video appeals to you, I'm sorry, I just don't get it.  And I very much doubt this library will appeal to you.  
 
