@@ -10,7 +10,7 @@ Focusing on the decade we are in, what are we to do when building web components
 
 But what if the web component is actually a dynamic business component?  What if you have philosophical issues with giving up on HTML and CSS mime types?
 
-deframe takes one approach to this dilemma.
+deframe takes an unorthodox approach to this dilemma.
 
 It lets you reference a web component by using an invisible iframe.  Before you scoff, it might be worth remembering that iframes unleashed AJAX originally!
 
@@ -32,7 +32,7 @@ If this video appeals to you, I'm sorry, I just don't get it.  And I very much d
 
 Step 1:
 
-Rapidly and loudly type a bunch of usesless commands in your terminal until carpel syndrome sets in.  Watch text fly by, and pretend you are Commander Data and can read the text as it flies by.
+Rapidly and loudly type a bunch of useless memorized commands in your terminal until carpel syndrome sets in.  Pretend you are Commander Data and can read the response text as it flies by.  Feel at one with your computer.
 
 Step 2:
 
@@ -54,7 +54,7 @@ Create an html file with the following syntax:
 </html>
 ```
 
-Step 2:  Open the page in your browser and see how it will look in standalone mode.
+Step 3:  Open the page in your browser and see how it will look in standalone mode.
 
 
 
@@ -64,10 +64,11 @@ Step 1:
 
 
 ```html
+
 <iframe src="MyWebcomponent.html" style="display:none"></iframe>
 ...
-<my-compoenent></my-component>
+<my-component></my-component>
 ```
 
-How non-awesome is that?
+How not-awesome is that?
 
