@@ -2,7 +2,7 @@
 
 ## Purpose
 
-deframe.js is a helper js library that lets you *def*ine a custom element/ web component via an invisible  i*frame* reference.
+deframe.js is a helper js library that lets you **def**ine a custom element/ web component via an invisible  if**rame** reference.
 
 The W3C Web Component working group is taking their sweet time coming up with a proposal to import HTML documents that is acceptable to all parties.  Then it will need to be implemented.  
 
@@ -16,12 +16,11 @@ It lets you reference a web component by using an invisible iframe.  Before you 
 
 Consumers of deframed web components need not reference this library.  Only web component authors reference it. 
 
-And the extra nice thing:  These web components can be tested by opening them directly in a browser individually!  I think this kind of workflow will feel quite natural to a developer not poisoned by the Stockholm Syndrom afflictng the web community, where everyone wears red RAWA hats React And Webpack are Awesome.  
+And the extra nice thing:  These web components can be tested by opening them directly in a browser individually!  I think this kind of workflow will feel quite natural to a developer not poisoned by the Stockholm Syndrom afflictng the web community, where everyone wears red RAWA hats -- every article seems to end with "React And/Or Webpack are Awesome".  
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=JC3jlCrsYYI
 " target="_blank"><img src="http://img.youtube.com/vi/JC3jlCrsYYI/0.jpg" 
 alt="Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack" width="480" height="360" border="10" /><br>Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack</a>
-
 
 
 If this video appeals to you, I'm sorry, I just don't get it.  And I very much doubt this library will appeal to you.  
@@ -29,9 +28,13 @@ If this video appeals to you, I'm sorry, I just don't get it.  And I very much d
 
 ## Syntax
 
-To create a deframed web component, follow these steps:
+### To create a deframed web component, follow these steps:
 
 Step 1:
+
+Rapidly and loudly type a bunch of usesless commands in your terminal until carpel syndrome sets in.  Watch text fly by, and pretend you are Commander Data and can read the text as it flies by.
+
+Step 2:
 
 Create an html file with the following syntax:
 
@@ -41,7 +44,7 @@ Create an html file with the following syntax:
 <html lang="en">
 <head>
     <script type="module">
-      import {deframe} from '../../deframe.js';
+      import {deframe} from 'deframe.js';
       deframe('my-component');
     </script>
 </head>
@@ -51,11 +54,11 @@ Create an html file with the following syntax:
 </html>
 ```
 
-Step 2:
+Step 2:  Open the page in your browser and see how it will look in standalone mode.
 
-Rapidly and loudly type a bunch of usesless commands in your terminal until carpel syndrome sets in.
 
-Reference your web component
+
+### Referencing your web component
 
 Step 1:
 
