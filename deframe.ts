@@ -10,6 +10,12 @@ function init(name: string, options: any = null){
     }
     const par = window.parent;
     const content = document.body.innerHTML;
+    const script = document.querySelector('script') as HTMLScriptElement;
+    const scriptClone = par.document.createElement('script') as HTMLScriptElement;
+    scriptClone.type = script.type;
+    scriptClone.src = script.src;
+    par.document.head!.appendChild(scriptClone);
+    //console.log(script!.src)
     class Temp extends (<any>par).HTMLElement{
         constructor(){
             super();
@@ -18,7 +24,7 @@ function init(name: string, options: any = null){
             this.innerHTML = content;
         }
     }
-    window.parent.customElements.define(name, Temp);
+    par.customElements.define(name, Temp);
 }
 
 export function deframe(name: string, options: any = null){
