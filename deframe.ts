@@ -9,7 +9,7 @@ function init(name: string, options: any = null){
         return;
     }
     const top = window.top;
-    document.querySelectorAll('link[as="script"]').forEach(link =>{
+    document.querySelectorAll('link[as="script"][rel="preloadmodule"]').forEach(link =>{
         const script = top.document.createElement('script') as HTMLScriptElement;
         script.src = (link as HTMLLinkElement).href;
         script.type = 'module';

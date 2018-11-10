@@ -6,7 +6,7 @@ deframe.js is a helper js library that lets you **def**ine a custom element/ web
 
 The W3C Web Component working group is taking their sweet time coming up with a proposal to import HTML documents that is acceptable to all parties.  Then it will need to be implemented.  
 
-Focusing on the decade we are in, what are we to do when building web components that are 99% HTML / CSS and 1% JavaScript?  Many seem comfortable just joining the everything-is-a-string-anyway crowd, and just encoding everything in ~~JavaScript~~ ~~TypeScript~~ ~~JSX~~ ~~ReasonML~~ [Webassembly](https://github.com/verdie-g/brainfuck2wasm).
+Focusing on the decade we are in, what are we to do when building web components that are 99% HTML / CSS and 1% JavaScript?  Many seem comfortable just joining the everything-is-a-string-anyway crowd, and just encoding everything in ~~JavaScript~~ ~~TypeScript~~ ~~JSX~~ ~~ReasonML~~ [WASM](https://github.com/verdie-g/brainfuck2wasm).
 
 But what if the web component is actually a dynamic, server-centric business component built with Ruby on Rails?  What if you have philosophical issues with giving up on HTML and CSS mime types, and think that the performance will be better by sticking to these quaint formats?
 
@@ -16,13 +16,13 @@ It lets you reference a web component via an invisible iframe.  Before you scoff
 
 Consumers of deframed web components need not reference this library.  Only web component authors reference it. 
 
-And the extra nice thing:  These web components can be tested by opening them directly in a browser individually!  I think this kind of workflow will feel quite natural to developers, like me, who find beauty in simplicity.  I recognize that I may be in a minority.  Take this video, by a clearly smart and competent developer, who feels passionate enough about the framework he was showcasing that he attached the words "awesome" to the title:
+And the extra nice thing:  These web components can be tested by opening them directly in a browser individually!  I think this kind of workflow will feel quite natural to developers, like me, who find beauty in (recursive) simplicity.  I recognize that I may be in a minority.  Take this video, by a clearly smart, mainstream and competent developer, who feels passionate enough about the framework he is showcasing that he attaches the words "awesome" to the title:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=JC3jlCrsYYI
 " target="_blank"><img src="http://img.youtube.com/vi/JC3jlCrsYYI/0.jpg" 
 alt="Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack" width="480" height="360" border="10" /><br>Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack</a>
 
-I frequently encounter articles or videos on this framework that begin  or end  with the salute "React (and/or Webpack) is awesome!"  So this developer has quite a bit of good company.  If this video appeals to you, I'm sorry, I just don't get it.  And I very much doubt the library described below will appeal to you.  
+I frequently encounter articles or videos on this framework that begin  or end  with the salute "React (and/or Webpack) is awesome!"  So this developer is in good company.  If what this video appeals to you, I'm sorry, I just don't get it.  And I very much doubt the library described below will appeal to you.  
 
 There are those, like me, who like sitting on the nearest chair when we tie our shoes.  And there are those who prefer to climb to the top of Annuparna to do so.  I certainly admire, even if I don't comprehend, such individuals.  That's what makes life so [mysterious and wonderful](http://www.simpleluxeliving.com/tao-te-ching-verse-two-embracing-circle-life/).
 
@@ -102,3 +102,14 @@ Because they're [iFrames](https://meowni.ca/posts/shadow-dom/)  iFrames are conf
 
 In fact, I am thinking that there may be some benefits in showing the initial, non interactive, static view of the first instance of a deframed web component by using a *visible* iframe, which would then get promoted to the web component once the (heavy) resource dependencies (including dynamic data retrieval) are finished being retrieved.  But that is not yet supported.
 
+## Script References
+
+If your web component references other web components (or libraries) that aren't deframed web components, you will need to include script references.
+
+To do this, add a preload tag in your web component definition:
+
+```html
+<head>
+<link rel="preloadmodule" href="p-d.iife.js" as="script">
+</head>
+```
