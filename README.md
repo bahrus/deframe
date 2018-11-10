@@ -98,7 +98,7 @@ How not-awesome is that?
 
 ## Why not just use iFrames and skip the web component part? 
 
-Because they're [iFrames](https://meowni.ca/posts/shadow-dom/)  iFrames are confined to a rectangle.  They often end up loading the same JS libraries over and over again (at least in memory), which is wasteful (shortly we will be providing some solutions for this issue).  They're kind of clunky to work with when passing in objects and pushing out events.
+Because they're [iFrames](https://meowni.ca/posts/shadow-dom/).  iFrames are confined to a rectangle.  They often end up loading the same JS libraries over and over again (at least in memory), which is wasteful.  They're kind of clunky to work with when passing in objects and pushing out events.
 
 In fact, I am thinking that there may be some benefits in showing the initial, non interactive, static view of the first instance of a deframed web component by using a *visible* iframe, which would then get promoted to the web component once the (heavy) resource dependencies (including dynamic data retrieval) are finished being retrieved.  But that is not yet supported.
 
