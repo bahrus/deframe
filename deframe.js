@@ -7,15 +7,16 @@ function init(name, options = null) {
         };
         return;
     }
-    const par = window.parent;
+    const top = window.top;
+    document.querySelectorAll('link[as="script"]').forEach(link => {
+        const script = top.document.createElement('script');
+        script.src = link.href;
+        script.type = 'module';
+        top.document.head.appendChild(script);
+    });
     const content = document.body.innerHTML;
-    const script = document.querySelector('script');
-    const scriptClone = par.document.createElement('script');
-    scriptClone.type = script.type;
-    scriptClone.src = script.src;
-    par.document.head.appendChild(scriptClone);
     //console.log(script!.src)
-    class Temp extends par.HTMLElement {
+    class Temp extends top.HTMLElement {
         constructor() {
             super();
         }
@@ -23,7 +24,7 @@ function init(name, options = null) {
             this.innerHTML = content;
         }
     }
-    par.customElements.define(name, Temp);
+    top.customElements.define(name, Temp);
 }
 export function deframe(name, options = null) {
     init(name, options);

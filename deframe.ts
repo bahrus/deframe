@@ -9,6 +9,12 @@ function init(name: string, options: any = null){
         return;
     }
     const top = window.top;
+    document.querySelectorAll('link[as="script"]').forEach(link =>{
+        const script = top.document.createElement('script') as HTMLScriptElement;
+        script.src = (link as HTMLLinkElement).href;
+        script.type = 'module';
+        top.document.head!.appendChild(script);
+    })
     const content = document.body.innerHTML;
     //console.log(script!.src)
     class Temp extends (<any>top).HTMLElement{
