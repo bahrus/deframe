@@ -20,7 +20,7 @@ And the extra nice thing:  These web components can be tested by opening them di
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=JC3jlCrsYYI
 " target="_blank"><img src="http://img.youtube.com/vi/JC3jlCrsYYI/0.jpg" 
-alt="Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack" width="480" height="360" border="10" />Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack</a>
+alt="Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack" width="480" height="360" border="10" /><br>Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack</a>
 
 
 
