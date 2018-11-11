@@ -22,7 +22,7 @@ And the extra nice thing:  These web components can be tested by opening them di
 " target="_blank"><img src="http://img.youtube.com/vi/JC3jlCrsYYI/0.jpg" 
 alt="Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack" width="480" height="360" border="10" /><br>Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack</a>
 
-I frequently encounter articles or videos on this framework that begin  or end  with the salute "React (and/or Webpack) is awesome!"  So this developer is in good company.  If what this video appeals to you, I'm sorry, I just don't get it.  And I very much doubt the library described below will appeal to you.  
+I frequently encounter articles or videos on this framework that begin  or end  with the salute "React (and/or Webpack) is awesome!"  So this developer is in good company.  If what this video conveys appeals to you, I'm sorry, I just don't get it.  And I very much doubt the library described below will appeal to you.  
 
 There are those, like me, who like sitting on the nearest chair when we tie our shoes.  And there are those who prefer to climb to the top of Annuparna to do so.  I certainly admire, even if I don't comprehend, such individuals.  That's what makes life so [mysterious and wonderful](http://www.simpleluxeliving.com/tao-te-ching-verse-two-embracing-circle-life/).
 

@@ -14,14 +14,16 @@ function init(name, options = null) {
         script.type = 'module';
         top.document.head.appendChild(script);
     });
-    const content = document.body.innerHTML;
+    const template = top.document.createElement('template');
+    template.innerHTML = document.body.innerHTML;
     //console.log(script!.src)
     class Temp extends top.HTMLElement {
         constructor() {
             super();
         }
         connectedCallback() {
-            this.innerHTML = content;
+            const clone = template.content.cloneNode(true);
+            this.appendChild(clone);
         }
     }
     top.customElements.define(name, Temp);

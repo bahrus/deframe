@@ -1,4 +1,5 @@
 
+
 function init(name: string, options: any = null){
     if(document.readyState !== 'complete'){
         document.onreadystatechange = function () {
@@ -14,15 +15,17 @@ function init(name: string, options: any = null){
         script.src = (link as HTMLLinkElement).href;
         script.type = 'module';
         top.document.head!.appendChild(script);
-    })
-    const content = document.body.innerHTML;
+    });
+    const template = top.document.createElement('template') as HTMLTemplateElement;
+    template.innerHTML = document.body.innerHTML;
     //console.log(script!.src)
     class Temp extends (<any>top).HTMLElement{
         constructor(){
             super();
         }
         connectedCallback(){
-            this.innerHTML = content;
+            const clone = template.content.cloneNode(true);
+            this.appendChild(clone);
         }
     }
     top.customElements.define(name, Temp);
