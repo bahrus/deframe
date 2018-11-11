@@ -1,6 +1,9 @@
 
-
-function init(name: string, options: any = null){
+type Class = { new(...args: any[]): any; };
+export interface IDeframeOptions{
+    useShadow: boolean;
+}
+function init(name: string, options: IDeframeOptions){
     if(document.readyState !== 'complete'){
         document.onreadystatechange = function () {
             if (document.readyState === "complete") {
@@ -19,19 +22,26 @@ function init(name: string, options: any = null){
     const template = top.document.createElement('template') as HTMLTemplateElement;
     template.innerHTML = document.body.innerHTML;
     //console.log(script!.src)
-    class Temp extends (<any>top).HTMLElement{
+    class Def extends (<any>top).HTMLElement{
         constructor(){
             super();
+            if(options.useShadow){
+                const clone = template.content.cloneNode(true);
+                this.attachShadow({ mode: 'open' });
+                this.shadowRoot.appendChild(template.content.cloneNode(true));
+            }
         }
         connectedCallback(){
-            const clone = template.content.cloneNode(true);
-            this.appendChild(clone);
+            if(!options.useShadow){
+                const clone = template.content.cloneNode(true);
+                this.appendChild(clone);
+            }
         }
     }
-    top.customElements.define(name, Temp);
+    top.customElements.define(name, Def);
 }
 
-export function deframe(name: string, options: any = null){
+export function deframe(name: string, options: IDeframeOptions = {useShadow: true}){
     init(name, options)
 }
 
