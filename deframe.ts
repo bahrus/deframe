@@ -1,7 +1,23 @@
 
 type Class = { new(...args: any[]): any; };
+interface IReflectingType{
+    toAttribute: Function,
+    fromAttribute: Function
+}
+export interface IProp{
+    //name: string,
+    type: Function | IReflectingType,
+    attribute?: string | boolean,
+    reflect?: boolean,
+    notify?: boolean,
+    notifyName?: string
+}
 export interface IDeframeOptions{
     useShadow: boolean;
+    properties?: IProp[];
+    templateID?: string;
+    onPropChange?: (name: string, oldVal: any, newVal: any) => void;
+    //methods: TODO
 }
 function init(name: string, options: IDeframeOptions){
     if(document.readyState !== 'complete'){
@@ -39,6 +55,12 @@ function init(name: string, options: IDeframeOptions){
         }
     }
     top.customElements.define(name, Def);
+
+    window.parent.document.querySelectorAll('iframe').forEach(element => {
+        if(element.contentWindow === window){
+            element.remove();
+        }
+    });
 }
 
 export function deframe(name: string, options: IDeframeOptions = {useShadow: true}){

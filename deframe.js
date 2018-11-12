@@ -34,6 +34,11 @@ function init(name, options) {
         }
     }
     top.customElements.define(name, Def);
+    window.parent.document.querySelectorAll('iframe').forEach(element => {
+        if (element.contentWindow === window) {
+            element.remove();
+        }
+    });
 }
 export function deframe(name, options = { useShadow: true }) {
     init(name, options);

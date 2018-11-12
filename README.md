@@ -6,13 +6,15 @@ deframe.js is a helper js library that lets you **def**ine a custom element/ web
 
 The W3C Web Component working group is taking their sweet time coming up with a proposal to import HTML documents that is acceptable to all parties.  Then it will need to be implemented.  
 
-Focusing on the decade we are in, what are we to do when building web components that are 99% HTML / CSS and 1% JavaScript?  Many seem comfortable just joining the everything-is-a-string-anyway crowd, and just encoding everything in ~~JavaScript~~ ~~TypeScript~~ ~~JSX~~ ~~ReasonML~~ [WASM](https://github.com/verdie-g/brainfuck2wasm).
+Focusing on the decade we are in, what are we to do when building web components that are 99% HTML / CSS and 1% JavaScript?  Many seem comfortable just joining the everything-is-a-string-anyway crowd, and just encoding everything in ~~JavaScript~~ ~~TypeScript~~ ~~JSX~~ ~~ReasonML~~ [BrainFuckML](https://github.com/verdie-g/brainfuck2wasm).
 
 But what if the web component is actually a dynamic, server-centric business component built with Ruby on Rails?  What if you have philosophical issues with giving up on HTML and CSS mime types, and think that the performance will be better by sticking to these quaint formats?
 
 deframe takes an unorthodox approach to this dilemma.
 
 It lets you reference a web component via an invisible iframe.  Before you scoff, it might be worth remembering that iframes helped unleash AJAX originally!
+
+I did a simple test, where I loaded a large html document as an iframe vs as a JavaScript string.  If I throttle CPU and the network, the differences are quite dramatic, particularly as it relates to first content display.  
 
 Consumers of deframed web components need not reference this library.  Only web component authors reference it. 
 
@@ -25,7 +27,6 @@ alt="Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack" width="480" height=
 I frequently encounter articles or videos on this framework that begin  or end  with the salute "React (and/or Webpack) is awesome!"  So this developer is in good company.  If what this video conveys appeals to you, I'm sorry, I just don't get it.  And I very much doubt the library described below will appeal to you.  
 
 There are those, like me, who like sitting on the nearest chair when we tie our shoes.  And there are those who prefer to climb to the top of Annuparna to do so.  I certainly admire, even if I don't comprehend, such individuals.  That's what makes life so [mysterious and wonderful](http://www.simpleluxeliving.com/tao-te-ching-verse-two-embracing-circle-life/).
-
 
 
 ## Syntax
@@ -113,3 +114,20 @@ To do this, add a preload tag in your web component definition:
 <link rel="preloadmodule" href="p-d.iife.js" as="script">
 </head>
 ```
+
+This arrangement works nicely:  The script tag is only loaded once -- In the refering page if there is one, otherwise in the standalone page.
+
+## CSS References
+
+Things aren't so clean with css:
+
+1.  I continue to be baffled how the link preload tag can be used programmatically with styles.  Everything I try results in duplicate downloads.
+2.  In addition, last I checked, Chrome doesn't deal very well with external references to css inside a web component template (maybe other browsers handle this better, but that would be small comfort).  And even if it did, extra care would need to be take to avoid "FOUC"
+
+So the css really needs to be part of the html template.  Including that CSS directly in the html template file certainly works.  But that might not be so convenient if the same file needs to be used more than once, or if tooling like SCSS is used.
+
+One can certainly make the case that if HTTP2 were 100% frictionless, the case for downloading the CSS separately could be quite strong.  HTTP3 may be even more frictionless.
+
+So one solid solution, if using separate files for CSS  would be to use server side includes, which the most widely used web servers support.  Unfortunately, it seems to be something not supported by most node-based web servers.  So alternatively, it should then be inlined during the build process.
+
+But now we're talking loud keyboard clacking and exotic npm installations just to produce a Hello world page.  Unacceptable!  So to make things work with minimal fuss,  you can reference deframeDev.js instead of deframe, which will properly resolve the css file.  A recommended tool for embedding the css during optimization is forthcoming.  (Maybe polymer tools does thisalready?)
