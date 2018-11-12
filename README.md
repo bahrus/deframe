@@ -101,8 +101,9 @@ How not-awesome is that?
 
 Because they're [iFrames](https://meowni.ca/posts/shadow-dom/).  iFrames are confined to a rectangle.  They often end up loading the same JS libraries over and over again (at least in memory), which is wasteful.  They're kind of clunky to work with when passing in objects and pushing out events.
 
-In fact, I mentioned a few things already that I'd like to take a second look at.  One is that for heavy HTML content, the first paint time is much better than streaming it as a JS string.  I also mentioned that setting display:none may reduce unnecessary rendering.  It may be that total cpu will be increased by not setting display:none, but the user would prefer the earlier display anyway.  deframe deletes the iframe once it has been turned into a web component.  Something I would stronly consider.
+In fact, I mentioned a few things already that I'd like to take a second look at.  One is that for heavy HTML content, the first paint time is much better than streaming it as a JS string.  I also mentioned that setting display:none may reduce unnecessary rendering.  It may be that total cpu will be increased by not setting display:none, but the user would prefer the earlier display anyway.  deframe deletes the iframe once it has been turned into a web component.  Something I would strongly consider.
 
+Hopefully when (if?) HTML Modules become a thing, these difficult tradeoffs will seem laughably quaint.
 
 ## Script References
 
@@ -116,19 +117,19 @@ To do this, add a preload tag in your web component definition:
 </head>
 ```
 
-This arrangement works nicely:  The script tag is only loaded once -- In the refering page if there is one, otherwise in the standalone page.
+This arrangement works nicely:  The script tag is only loaded once -- In the referring page if there is one, otherwise in the standalone page.
 
 ## CSS References
 
 Things aren't so clean with css:
 
 1.  I continue to be baffled how the link preload tag can be used programmatically with styles.  Everything I try results in duplicate downloads.
-2.  In addition, last I checked, Chrome doesn't deal very well with external references to css inside a web component template (maybe other browsers handle this better, but that would be small comfort).  And even if it did, extra care would need to be take to avoid "FOUC"
+2.  In addition, last I checked, Chrome doesn't deal very well with external references to css inside a web component template (maybe other browsers handle this better, but that would be small comfort).  And even if it did, extra care would need to be taken to avoid "FOUC"
 
 So the css really needs to be part of the html template.  Including that CSS directly in the html template file certainly works.  But that might not be so convenient if the same file needs to be used more than once, or if tooling like SCSS is used.
 
-One can certainly make the case that if HTTP2 were 100% frictionless, the case for downloading the CSS separately could be quite strong.  HTTP3 may be even more frictionless.
+One can certainly make the case that if HTTP2 were 100% frictionless, the case for downloading the CSS separately could be quite strong.  HTTP3 may be even more frictionless.  But for now, I think the case for embedding the css is generally higher, in production (not dev).
 
 So one solid solution, if using separate files for CSS  would be to use server side includes, which the most widely used web servers support.  Unfortunately, it seems to be something not supported by most node-based web servers.  So alternatively, it should then be inlined during the build process.
 
-But now we're talking loud keyboard clacking and exotic npm installations just to produce a Hello world page.  Unacceptable!  So to make things work with minimal fuss,  you can reference deframeDev.js instead of deframe, which will properly resolve the css file.  A recommended tool for embedding the css during optimization is forthcoming.  (Maybe polymer tools does thisalready?)
+But now we're talking loud keyboard clacking and exotic npm installations just to produce a Hello world page.  Unacceptable!  So to make things work with minimal fuss,  you can reference deframeDev.js instead of deframe, which will properly resolve the css file.  [TODO] A recommended tool for embedding the css during optimization is forthcoming.  (Maybe polymer tools does this already?)
