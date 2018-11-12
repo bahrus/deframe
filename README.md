@@ -2,7 +2,7 @@
 
 ## Purpose
 
-deframe.js is a helper js library that lets you **def**ine a custom element/ web component via an [invisible  if**rame** reference](https://www.chromestatus.com/features/4692243256442880).
+deframe.js is a helper js library that lets you **def**ine a custom element/ web component via an [optionally invisible  if**rame** reference](https://www.chromestatus.com/features/4692243256442880).
 
 The W3C Web Component working group is taking their sweet time coming up with a proposal to import HTML documents that is acceptable to all parties.  Then it will need to be implemented.  
 
@@ -101,7 +101,8 @@ How not-awesome is that?
 
 Because they're [iFrames](https://meowni.ca/posts/shadow-dom/).  iFrames are confined to a rectangle.  They often end up loading the same JS libraries over and over again (at least in memory), which is wasteful.  They're kind of clunky to work with when passing in objects and pushing out events.
 
-In fact, I am thinking that there may be some benefits in showing the initial, non interactive, static view of the first instance of a deframed web component by using a *visible* iframe, which would then get promoted to the web component once the (heavy) resource dependencies (including dynamic data retrieval) are finished being retrieved.  But that is not yet supported.
+In fact, I mentioned a few things already that I'd like to take a second look at.  One is that for heavy HTML content, the first paint time is much better than streaming it as a JS string.  I also mentioned that setting display:none may reduce unnecessary rendering.  It may be that total cpu will be increased by not setting display:none, but the user would prefer the earlier display anyway.  deframe deletes the iframe once it has been turned into a web component.  Something I would stronly consider.
+
 
 ## Script References
 
