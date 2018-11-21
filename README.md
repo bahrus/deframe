@@ -87,6 +87,8 @@ You will see the following words appear in your browser:
 
 If you throttle your network, you will see an ugly style-less iframe show the text first, which will then morph into a custom element.
 
+You can fix this by styling the iframe the way you like it, or setting display none (and you can put it your head tag if you want).
+
 How not-awesome is that?
 
 ## Why not just use iFrames and skip the web component part? 
