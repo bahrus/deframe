@@ -5,6 +5,8 @@
 
 <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.6/dist/deframe.min.js?compression=gzip">
 
+<a href="https://bahrus.github.io/deframe/dev.html">Demo</a>
+
 # deframe
 
 ## Purpose
@@ -140,3 +142,16 @@ One can certainly make the case that if HTTP2 were 100% frictionless, the case f
 So one solid solution, if using separate files for CSS  would be to use server side includes, which the most widely used web servers support.  Unfortunately, it seems to be something not supported by most node-based web servers.  So alternatively, it should then be inlined during the build process.
 
 But now we're talking loud keyboard clacking and exotic npm installations just to produce a Hello world page.  Unacceptable!  So to make things work with minimal fuss,  you can reference deframeDev.js instead of deframe, which will properly resolve the css file.  [TODO] A recommended tool for embedding the css during optimization is forthcoming.  (Maybe polymer tools does this already?)
+
+<!--
+```
+<custom-element-demo>
+  <template>
+
+    <iframe src="https://bahrus.github.io/deframe/wc/test.html"></iframe>
+    <test-2></test-2>
+
+</template>
+</custom-element-demo>
+```
+-->
