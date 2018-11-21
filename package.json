@@ -3,6 +3,16 @@
   "version": "0.0.4",
   "description": "TBD",
   "main": "deframe.js",
+  "dependencies": {
+    "xtal-latx": "0.0.69"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "jiife": "0.0.6",
+    "tape": "^4.9.1",
+    "@types/tape": "4.2.32",
+    "xtal-test": "0.0.8"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

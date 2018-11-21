@@ -72,7 +72,7 @@ You should see "Hello darkness, my old friend"
 
 Step 1:
 
-Create an html file (or server-side stream) that references your component via an iframe tag.  Then sprinkle the web component tag throughout the application as it is needed.  Only one iframe gets created, for the sole purpose of downloading markup dependencies.
+Create an html file (or server-side stream) that references your component via an iframe tag.  Then sprinkle the web component tag throughout the application as it is needed.  Only one iFrame gets created, for the sole purpose of downloading markup dependencies (and is promptly deleted when it ceases being useful).
 
 ```html
 <!DOCTYPE html>
