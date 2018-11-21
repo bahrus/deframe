@@ -1,2 +1,2 @@
 const jiife = require('jiife');
-jiife.processFiles(['deframe.js'], 'dist/deframe.iife.js');
+jiife.processFiles(['deframe.js'], 'dist/deframe.js', true);

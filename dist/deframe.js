@@ -1,7 +1,4 @@
-
-    //@ts-check
-    (function () {
-    function init(name, options) {
+function init(name, options) {
     if (document.readyState !== 'complete') {
         document.onreadystatechange = function () {
             if (document.readyState === "complete") {
@@ -43,8 +40,6 @@
         }
     });
 }
-function deframe(name, options = { useShadow: true }) {
+export function deframe(name, options = { useShadow: true }) {
     init(name, options);
 }
-    })();  
-        

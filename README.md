@@ -1,3 +1,10 @@
+
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/deframe)
+
+<a href="https://nodei.co/npm/deframe/"><img src="https://nodei.co/npm/deframe.png"></a>
+
+<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.6/dist/deframe.min.js?compression=gzip">
+
 # deframe
 
 ## Purpose
