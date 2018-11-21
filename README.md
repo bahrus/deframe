@@ -148,7 +148,7 @@ But now we're talking loud keyboard clacking and exotic npm installations just t
 <custom-element-demo>
   <template>
 
-    <iframe src="https://bahrus.github.io/deframe/wc/test.html"></iframe>
+    <iframe src="demo/wc/test.html"></iframe>
     <test-2></test-2>
 
 </template>
