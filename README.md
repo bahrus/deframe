@@ -6,28 +6,19 @@ deframe.js is a helper js library that lets you **def**ine a custom element/ web
 
 The W3C Web Component working group is taking their sweet time coming up with a proposal to import HTML documents that is acceptable to all parties.  Then it will need to be implemented.  
 
-Focusing on the decade we are in, what are we to do when building web components that are 99% HTML / CSS and 1% JavaScript?  Many seem comfortable just joining the everything-is-a-string-anyway crowd, and just encoding everything in ~~JavaScript~~ ~~TypeScript~~ ~~JSX~~ ~~ReasonML~~ [BrainFuckML](https://github.com/verdie-g/brainfuck2wasm).
+Focusing on the decade we are in, what are we to do when building web components that are 99% HTML / CSS and 1% JavaScript?  Many seem comfortable just joining the everything-is-a-string-anyway crowd, and just encoding everything in ~~JavaScript~~ ~~TypeScript~~ ~~TSX~~ ~~ReasonML~~ [BrainFuckML](https://github.com/verdie-g/brainfuck2wasm).
 
-But what if the web component is actually a dynamic, server-centric business component built with Ruby on Rails?  What if you have philosophical issues with giving up on HTML and CSS mime types, and think that the performance will be better by sticking to these quaint formats?
+But what if the web component is actually a dynamic, server-centric business component built with Ruby on Rails?  What if you have philosophical issues with giving up on HTML and CSS mime types based on such quaint notions as performance optimization?
 
 deframe takes an unorthodox approach to this dilemma.
 
-It lets you reference a web component via an invisible iframe.  Before you scoff, it might be worth remembering that iframes helped unleash AJAX originally!
+It lets you reference a web component via an optionally invisible iframe.  Before you scoff, it might be worth remembering that iframes helped unleash AJAX originally.
 
-I did a simple test, where I loaded a large html document as an iframe vs as a JavaScript string.  If I throttle CPU and the network, the differences are quite dramatic, particularly as it relates to first content display.  
+I did a simple test, where I loaded a large html document as an iframe vs as a JavaScript string.  If I throttle CPU and the network, the differences are quite dramatic, particularly as it relates to first content display.  (At least visually it is dramatic.  Lighthouse gives them the same score)  
 
 Consumers of deframed web components need not reference this library.  Only web component authors reference it. 
 
-And the extra nice thing:  These web components can be tested by opening them directly in a browser individually!  I think this kind of workflow will feel quite natural to developers, like me, who find beauty in (recursive) simplicity.  I recognize that I may be in a minority.  Take this video, by a clearly smart, mainstream and competent developer, who feels passionate enough about the framework he is showcasing that he attaches the words "awesome" to the title:
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=JC3jlCrsYYI
-" target="_blank"><img src="http://img.youtube.com/vi/JC3jlCrsYYI/0.jpg" 
-alt="Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack" width="480" height="360" border="10" /><br>Awesome ReactJS 2017 ReactJS 01 with Babel and Webpack</a>
-
-I frequently encounter articles or videos on this framework that begin  or end  with the salute "React (and/or Webpack) is awesome!"  So this developer is in good company.  If what this video conveys appeals to you, I'm sorry, I just don't get it.  And I very much doubt the library described below will appeal to you.  
-
-There are those, like me, who like sitting on the nearest chair when we tie our shoes.  And there are those who prefer to climb to the top of Annuparna to do so.  I certainly admire, even if I don't comprehend, such individuals.  That's what makes life so [mysterious and wonderful](http://www.simpleluxeliving.com/tao-te-ching-verse-two-embracing-circle-life/).
-
+And the extra nice thing:  These web components can be tested by opening them directly in a browser individually!  I think this kind of workflow will feel quite natural to developers, like me, who find beauty in (recursive) simplicity.  
 
 ## Syntax
 
@@ -39,7 +30,7 @@ Pick a [web server](https://en.wikipedia.org/wiki/Web_server) you want to work w
 
 Step 2:
 
-Rapidly and loudly type a bunch of useless memorized commands in your terminal until carpel syndrome sets in.  Pretend you are Commander Data and can read the response text as it flies by.  Feel at one with your computer.  
+Rapidly and loudly type a bunch of useless memorized commands in your terminal until carpel tunnel syndrome sets in.  Pretend you are Commander Data and can read the response text as it flies by.  Feel at one with your computer.  
 
 Step 3:
 
@@ -77,12 +68,11 @@ Create an html file (or server-side stream) that references your component via a
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <iframe src="MyWebcomponent.html" style="display:none"></iframe>
-</head>
 <body>
 ...
+<iframe src="MyWebcomponent.html"></iframe>
 <my-component></my-component>
+...
 </body>
 </html>
 ```
@@ -93,7 +83,9 @@ Open the link in your favorite (non Edge/IE11) browser.  (Polyfills are needed f
 
 You will see the following words appear in your browser:
 
-"Hello darkness, my old friend"
+"Hello darkness, my old friend."
+
+If you throttle your network, you will see an ugly style-less iframe show the text first, which will then morph into a custom element.
 
 How not-awesome is that?
 
@@ -118,6 +110,12 @@ To do this, add a preload tag in your web component definition:
 ```
 
 This arrangement works nicely:  The script tag is only loaded once -- In the referring page if there is one, otherwise in the standalone page.
+
+## Options
+
+The deframe function has a second argument where you can specify options.  For now, there is only setting -- whether to use Shadow DOM or not.  By default, Shadow DOM is used.  To avoid ShadowDOM, use:
+
+deframe('my-name', {useShadow: false})
 
 ## CSS References
 
