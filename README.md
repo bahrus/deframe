@@ -104,9 +104,11 @@ How not-awesome is that?
 
 Because they're [iFrames](https://meowni.ca/posts/shadow-dom/).  iFrames are confined to a rectangle.  They often end up loading the same JS libraries over and over again (at least in memory), which is wasteful.  They're kind of clunky to work with when passing in objects and pushing out events.
 
-In fact, I mentioned a few things already that I'd like to take a second look at.  One is that for heavy HTML content, the first paint time is much better than streaming it as a JS string.  I also mentioned that setting display:none may reduce unnecessary rendering.  It may be that total cpu will be increased by not setting display:none, but the user would prefer the earlier display anyway.  deframe deletes the iframe once it has been turned into a web component.  Something I would strongly consider.
+In fact, I mentioned a few things already that I'd like to take a second look at.  One is that for heavy HTML content, the first paint time is much better than streaming it as a JS string.  I also mentioned that setting display:none may reduce unnecessary rendering.  It may be that total cpu will be increased by not setting display:none, but the user would prefer the earlier display anyway.  deframe deletes the iframe once it has been turned into a web component.  
 
 Hopefully when (if?) HTML Modules become a thing, these difficult tradeoffs will seem laughably quaint.
+
+NB:  iFrames are also quite a bit more restrictive as far as cross-domain integration.  
 
 ## Script References
 
@@ -143,15 +145,3 @@ So one solid solution, if using separate files for CSS  would be to use server s
 
 But now we're talking loud keyboard clacking and exotic npm installations just to produce a Hello world page.  Unacceptable!  So to make things work with minimal fuss,  you can reference deframeDev.js instead of deframe, which will properly resolve the css file.  [TODO] A recommended tool for embedding the css during optimization is forthcoming.  (Maybe polymer tools does this already?)
 
-<!--
-```
-<custom-element-demo>
-  <template>
-
-    <iframe src="demo/wc/test.html"></iframe>
-    <test-2></test-2>
-
-</template>
-</custom-element-demo>
-```
--->

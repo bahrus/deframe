@@ -27,9 +27,22 @@ function init(name, options) {
             }
         }
         connectedCallback() {
+            const ab = options.attachBehavior;
             if (!options.useShadow) {
                 const clone = template.content.cloneNode(true);
                 this.appendChild(clone);
+                if (ab !== null) {
+                    this.querySelectorAll(ab.selector).forEach((el) => {
+                        ab.attach(el, top);
+                    });
+                }
+            }
+            else {
+                if (ab !== null) {
+                    this.shadowRoot.querySelectorAll(ab.selector).forEach((el) => {
+                        ab.attach(el, top);
+                    });
+                }
             }
         }
     }
@@ -40,7 +53,7 @@ function init(name, options) {
         }
     });
 }
-export function deframe(name, options = { useShadow: true }) {
+export function deframe(name, options = { useShadow: true, attachBehavior: null }) {
     init(name, options);
 }
 //# sourceMappingURL=deframe.js.map

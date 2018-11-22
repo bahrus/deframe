@@ -1,8 +1,14 @@
 
 type Class = { new(...args: any[]): any; };
 
+export interface IAttachBehavior{
+    selector: string,
+    attach: (target: HTMLElement, win: Window) => void;
+}
+
 export interface IDeframeOptions{
-    useShadow: boolean;
+    useShadow: boolean,
+    attachBehavior: IAttachBehavior | null,
 }
 function init(name: string, options: IDeframeOptions){
     if(document.readyState !== 'complete'){
@@ -30,12 +36,25 @@ function init(name: string, options: IDeframeOptions){
                 const clone = template.content.cloneNode(true);
                 this.attachShadow({ mode: 'open' });
                 this.shadowRoot.appendChild(template.content.cloneNode(true));
+
             }
         }
         connectedCallback(){
+            const ab = options.attachBehavior;
             if(!options.useShadow){
                 const clone = template.content.cloneNode(true);
                 this.appendChild(clone);
+                if(ab !== null){
+                    this.querySelectorAll(ab.selector).forEach((el: any) =>{
+                        ab.attach(el, top);
+                    })
+                }
+            }else{
+                if(ab !== null){
+                    this.shadowRoot.querySelectorAll(ab.selector).forEach((el: any) =>{
+                        ab.attach(el, top);
+                    })
+                }
             }
         }
     }
@@ -48,7 +67,7 @@ function init(name: string, options: IDeframeOptions){
     });
 }
 
-export function deframe(name: string, options: IDeframeOptions = {useShadow: true}){
+export function deframe(name: string, options: IDeframeOptions = {useShadow: true, attachBehavior: null}){
     init(name, options)
 }
 
