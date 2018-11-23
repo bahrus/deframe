@@ -14,6 +14,15 @@ function init(name, options) {
         script.type = 'module';
         top.document.head.appendChild(script);
     });
+    if (window === top) {
+        const ab = options.attachBehavior;
+        if (ab !== null) {
+            document.querySelectorAll(ab.selector).forEach((el) => {
+                ab.attach(el, top);
+            });
+        }
+        return;
+    }
     const template = top.document.createElement('template');
     template.innerHTML = document.body.innerHTML;
     //console.log(script!.src)
@@ -27,9 +36,22 @@ function init(name, options) {
             }
         }
         connectedCallback() {
+            const ab = options.attachBehavior;
             if (!options.useShadow) {
                 const clone = template.content.cloneNode(true);
                 this.appendChild(clone);
+                if (ab !== null) {
+                    this.querySelectorAll(ab.selector).forEach((el) => {
+                        ab.attach(el, top);
+                    });
+                }
+            }
+            else {
+                if (ab !== null) {
+                    this.shadowRoot.querySelectorAll(ab.selector).forEach((el) => {
+                        ab.attach(el, top);
+                    });
+                }
             }
         }
     }
@@ -40,6 +62,6 @@ function init(name, options) {
         }
     });
 }
-export function deframe(name, options = { useShadow: true }) {
+export function deframe(name, options = { useShadow: true, attachBehavior: null }) {
     init(name, options);
 }

@@ -14,6 +14,15 @@ function init(name, options) {
         script.type = 'module';
         top.document.head.appendChild(script);
     });
+    if (window === top) {
+        const ab = options.attachBehavior;
+        if (ab !== null) {
+            document.querySelectorAll(ab.selector).forEach((el) => {
+                ab.attach(el, top);
+            });
+        }
+        return;
+    }
     const template = top.document.createElement('template');
     template.innerHTML = document.body.innerHTML;
     //console.log(script!.src)
