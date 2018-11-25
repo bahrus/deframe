@@ -3,7 +3,7 @@
 
 <a href="https://nodei.co/npm/deframe/"><img src="https://nodei.co/npm/deframe.png"></a>
 
-<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.10/dist/deframe.min.js?compression=gzip">
+<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.11/dist/deframe.min.js?compression=gzip">
 
 <a href="https://bahrus.github.io/deframe/dev.html">Demo</a>
 
@@ -109,6 +109,14 @@ In fact, I mentioned a few things already that I'd like to take a second look at
 Hopefully when (if?) HTML Modules become a thing, these difficult tradeoffs will seem laughably quaint.
 
 NB:  iFrames are also quite a bit more restrictive as far as cross-domain integration.  
+
+## Examples:
+
+### Example 1:  code-pen calculator
+
+[Click here to see it in action](https://bahrus.github.io/xtal-math/demo/dev.html).  Note that it progressively renders.  It is a basic calculator, based off the mostly css-based [code-pen](https://codepen.io/giana/pen/GJMBEv).
+
+And not only can the iframe be used to reference the web component, you can open the reference directly as a standalone URL:  https://bahrus.github.io/xtal-math/giana-pen.html
 
 ## Script References
 

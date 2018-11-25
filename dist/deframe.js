@@ -40,14 +40,14 @@ function init(name, options) {
             if (!options.useShadow) {
                 const clone = template.content.cloneNode(true);
                 this.appendChild(clone);
-                if (ab !== null) {
+                if (ab) {
                     this.querySelectorAll(ab.selector).forEach((el) => {
                         ab.attach(el, top);
                     });
                 }
             }
             else {
-                if (ab !== null) {
+                if (ab) {
                     this.shadowRoot.querySelectorAll(ab.selector).forEach((el) => {
                         ab.attach(el, top);
                     });
