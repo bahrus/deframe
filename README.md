@@ -142,9 +142,9 @@ By default, Shadow DOM is used.  To avoid ShadowDOM, use:
 
 deframe('my-name', {useShadow: false})
 
-### Use a template
+### Using a template
 
-In some scenarios, the benefits of initial display that the iframe provides is outweighed by the CPU costs of transferring things from the iframe into the top window.  To alleviate that cost, you can wrap the contents of the body tag inside a template:
+In some scenarios, the benefits of initial display that the iframe provides appears to be outweighed by the CPU costs of rendering and then transferring things from the iframe into the top window.  To alleviate that cost, you can wrap the contents of the body tag inside a template:
 
 ```html
 <body>
@@ -162,6 +162,9 @@ deframe('my-component',{
     bodyContainsTemplate: true
 });
 ```
+
+deframe unwraps the template, whether it is used as a deframed web component, or as a standalone web page.
+
 ## CSS References
 
 Things aren't so clean with css:
