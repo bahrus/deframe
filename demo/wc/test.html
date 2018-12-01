@@ -8,12 +8,15 @@
     <title>Document</title>
     <script type="module">
       import {deframe} from '../../deframe.js';
-      deframe('test-2');
+      deframe('test-2',{
+          useShadow: true,
+          bodyContainsTemplate: true
+      });
     </script>
     
     
 </head>
 <body>
-    I am here
+    <template>I am here</template>
 </body>
 </html>

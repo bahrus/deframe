@@ -134,10 +134,34 @@ This arrangement works nicely:  The script tag is only loaded once -- In the ref
 
 ## Options
 
-The deframe function has a second argument where you can specify options.  For now, there is only setting -- whether to use Shadow DOM or not.  By default, Shadow DOM is used.  To avoid ShadowDOM, use:
+The deframe function has a second argument where you can specify options.
+
+### To Shadow or not to Shadow
+
+By default, Shadow DOM is used.  To avoid ShadowDOM, use:
 
 deframe('my-name', {useShadow: false})
 
+### Use a template
+
+In some scenarios, the benefits of initial display that the iframe provides is outweighed by the CPU costs of transferring things from the iframe into the top window.  To alleviate that cost, you can wrap the contents of the body tag inside a template:
+
+```html
+<body>
+<template>
+...
+<template>
+</body>
+```
+
+In this case, you need to let deframe know to unwrap the template:
+
+```JavaScript
+deframe('my-component',{
+    useShadow: true,
+    bodyContainsTemplate: true
+});
+```
 ## CSS References
 
 Things aren't so clean with css:

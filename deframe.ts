@@ -9,6 +9,7 @@ export interface IAttachBehavior{
 export interface IDeframeOptions{
     useShadow: boolean,
     attachBehavior: IAttachBehavior | null,
+    bodyContainsTemplate: boolean,
 }
 function init(name: string, options: IDeframeOptions){
     if(document.readyState !== 'complete'){
@@ -26,6 +27,8 @@ function init(name: string, options: IDeframeOptions){
         script.type = 'module';
         top.document.head!.appendChild(script);
     });
+    let preDefTempl: HTMLTemplateElement | null = null;
+    if(options.bodyContainsTemplate) preDefTempl = document.body.firstElementChild as HTMLTemplateElement;
     if(window === top){
         const ab = options.attachBehavior;
         if(ab !== null){
@@ -33,25 +36,32 @@ function init(name: string, options: IDeframeOptions){
                 ab.attach(el, top);
             })
         }
+        if(preDefTempl){
+            document.body.appendChild(preDefTempl.content.cloneNode(true));
+            preDefTempl.remove();
+        }
         return;      
     }
-    const template = top.document.createElement('template') as HTMLTemplateElement;
-    template.innerHTML = document.body.innerHTML;
+    if(preDefTempl === null){
+        preDefTempl = top.document.createElement('template') as HTMLTemplateElement;
+        preDefTempl.innerHTML = document.body.innerHTML;
+    }
+
     //console.log(script!.src)
     class Def extends (<any>top).HTMLElement{
         constructor(){
             super();
             if(options.useShadow){
-                const clone = template.content.cloneNode(true);
+                const clone = preDefTempl!.content.cloneNode(true);
                 this.attachShadow({ mode: 'open' });
-                this.shadowRoot.appendChild(template.content.cloneNode(true));
+                this.shadowRoot.appendChild(preDefTempl!.content.cloneNode(true));
 
             }
         }
         connectedCallback(){
             const ab = options.attachBehavior;
             if(!options.useShadow){
-                const clone = template.content.cloneNode(true);
+                const clone = preDefTempl!.content.cloneNode(true);
                 this.appendChild(clone);
                 if(ab){
                     this.querySelectorAll(ab.selector).forEach((el: any) =>{
@@ -76,7 +86,9 @@ function init(name: string, options: IDeframeOptions){
     });
 }
 
-export function deframe(name: string, options: IDeframeOptions = {useShadow: true, attachBehavior: null}){
+export function deframe(name: string, options: IDeframeOptions = {
+    useShadow: true, attachBehavior: null, bodyContainsTemplate: false
+}){
     init(name, options)
 }
 

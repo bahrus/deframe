@@ -14,6 +14,9 @@ function init(name, options) {
         script.type = 'module';
         top.document.head.appendChild(script);
     });
+    let preDefTempl = null;
+    if (options.bodyContainsTemplate)
+        preDefTempl = document.body.firstElementChild;
     if (window === top) {
         const ab = options.attachBehavior;
         if (ab !== null) {
@@ -21,24 +24,30 @@ function init(name, options) {
                 ab.attach(el, top);
             });
         }
+        if (preDefTempl) {
+            document.body.appendChild(preDefTempl.content.cloneNode(true));
+            preDefTempl.remove();
+        }
         return;
     }
-    const template = top.document.createElement('template');
-    template.innerHTML = document.body.innerHTML;
+    if (preDefTempl === null) {
+        preDefTempl = top.document.createElement('template');
+        preDefTempl.innerHTML = document.body.innerHTML;
+    }
     //console.log(script!.src)
     class Def extends top.HTMLElement {
         constructor() {
             super();
             if (options.useShadow) {
-                const clone = template.content.cloneNode(true);
+                const clone = preDefTempl.content.cloneNode(true);
                 this.attachShadow({ mode: 'open' });
-                this.shadowRoot.appendChild(template.content.cloneNode(true));
+                this.shadowRoot.appendChild(preDefTempl.content.cloneNode(true));
             }
         }
         connectedCallback() {
             const ab = options.attachBehavior;
             if (!options.useShadow) {
-                const clone = template.content.cloneNode(true);
+                const clone = preDefTempl.content.cloneNode(true);
                 this.appendChild(clone);
                 if (ab) {
                     this.querySelectorAll(ab.selector).forEach((el) => {
@@ -62,7 +71,9 @@ function init(name, options) {
         }
     });
 }
-export function deframe(name, options = { useShadow: true, attachBehavior: null }) {
+export function deframe(name, options = {
+    useShadow: true, attachBehavior: null, bodyContainsTemplate: false
+}) {
     init(name, options);
 }
 //# sourceMappingURL=deframe.js.map
