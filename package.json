@@ -1,7 +1,7 @@
 {
   "name": "deframe",
   "version": "0.0.12",
-  "description": "TBD",
+  "description": "Define a web component via an iFrame",
   "main": "deframe.js",
   "dependencies": {
     "xtal-latx": "0.0.69"

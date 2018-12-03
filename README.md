@@ -3,7 +3,7 @@
 
 <a href="https://nodei.co/npm/deframe/"><img src="https://nodei.co/npm/deframe.png"></a>
 
-<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.11/dist/deframe.min.js?compression=gzip">
+<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.13/dist/deframe.min.js?compression=gzip">
 
 <a href="https://bahrus.github.io/deframe/dev.html">Demo</a>
 
@@ -108,7 +108,33 @@ In fact, I mentioned a few things already that I'd like to take a second look at
 
 Hopefully when (if?) HTML Modules become a thing, these difficult tradeoffs will seem laughably quaint.
 
-NB:  iFrames are also quite a bit more restrictive as far as cross-domain integration.  
+NB:  iFrames are also quite a bit more restrictive as far as cross-domain integration. 
+
+## Defining your own class
+
+In many cases, there's no need to define your own custom element class.  deframe defines it for you, unless you need to roll your own.  This is done as follows:
+
+```html
+    <script type="module">
+      import {deframe} from '../../deframe.js';
+      deframe(null, {
+          useShadow: true,
+          bodyContainsTemplate: true,
+          defineFn: (templ, options) =>{
+              class Test extends top.HTMLElement{
+                  constructor(){
+                    super();
+                        this.attachShadow({ mode: 'open' });
+                        const clone = templ.content.cloneNode(true);
+                        this.shadowRoot.appendChild(clone);
+
+                  }
+              }
+              window.top.customElements.define('test-2', Test);
+          }
+      });
+    </script>
+```
 
 ## Examples:
 
