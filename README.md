@@ -3,7 +3,7 @@
 
 <a href="https://nodei.co/npm/deframe/"><img src="https://nodei.co/npm/deframe.png"></a>
 
-<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.13/dist/deframe.min.js?compression=gzip">
+<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.15/dist/deframe.min.js?compression=gzip">
 
 <a href="https://bahrus.github.io/deframe/dev.html">Demo</a>
 
@@ -118,8 +118,8 @@ In many cases, there's no need to define your own custom element class.  deframe
     <script type="module">
       import {deframe} from '../../deframe.js';
       deframe(null, {
-          defineFn: (templ, options) =>{
-              class Test extends top.HTMLElement{
+          defineFn: (root, templ, options) =>{
+              class Test extends root.HTMLElement{
                   constructor(){
                     super();
                         this.attachShadow({ mode: 'open' });
@@ -128,7 +128,7 @@ In many cases, there's no need to define your own custom element class.  deframe
 
                   }
               }
-              window.top.customElements.define('test-2', Test);
+              root.customElements.define('test-2', Test);
           }
       });
     </script>
