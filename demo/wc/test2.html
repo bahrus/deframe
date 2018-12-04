@@ -9,8 +9,6 @@
     <script type="module">
       import {deframe} from '../../deframe.js';
       deframe(null, {
-          useShadow: true,
-          bodyContainsTemplate: true,
           defineFn: (templ, options) =>{
               class Test extends top.HTMLElement{
                   constructor(){
@@ -29,6 +27,6 @@
     
 </head>
 <body>
-    <template>I am here 2</template>
+    I am here 2
 </body>
 </html>

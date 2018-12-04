@@ -118,8 +118,6 @@ In many cases, there's no need to define your own custom element class.  deframe
     <script type="module">
       import {deframe} from '../../deframe.js';
       deframe(null, {
-          useShadow: true,
-          bodyContainsTemplate: true,
           defineFn: (templ, options) =>{
               class Test extends top.HTMLElement{
                   constructor(){
