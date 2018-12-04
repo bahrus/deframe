@@ -9,8 +9,8 @@
     <script type="module">
       import {deframe} from '../../deframe.js';
       deframe(null, {
-          defineFn: (templ, options) =>{
-              class Test extends top.HTMLElement{
+          defineFn: (root, templ, options) =>{
+              class Test extends root.HTMLElement{
                   constructor(){
                     super();
                         this.attachShadow({ mode: 'open' });
@@ -19,7 +19,7 @@
 
                   }
               }
-              window.top.customElements.define('test-2', Test);
+              root.customElements.define('test-2', Test);
           }
       });
     </script>

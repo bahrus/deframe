@@ -1,3 +1,4 @@
+import { constants } from "zlib";
 
 type Class = { new(...args: any[]): any; };
 
@@ -10,7 +11,24 @@ export interface IDeframeOptions {
     useShadow: boolean,
     attachBehavior: IAttachBehavior | null,
     bodyContainsTemplate: boolean,
-    defineFn: (templ: HTMLTemplateElement, options: IDeframeOptions) => void;
+    defineFn: ((top: Window, templ: HTMLTemplateElement, options: IDeframeOptions) => void) | null;
+}
+function test(win: Window){
+    try{
+        win.customElements.get('test-ing');
+    }catch(e){
+        return false;
+    }
+
+    return true;
+}
+function getTop(win: Window): Window{
+    if((<any>win).buckStopsHere){
+        return win;
+    }
+    if(!test(win.parent)) return win;
+    if(win === win.parent) return win;
+    return getTop(win.parent);
 }
 function init(name: string, options: IDeframeOptions) {
     if (document.readyState !== 'complete') {
@@ -21,7 +39,8 @@ function init(name: string, options: IDeframeOptions) {
         }
         return;
     }
-    const top = window.top;
+    const top = getTop(window);;
+
     document.querySelectorAll('link[as="script"][rel="preloadmodule"]').forEach(link => {
         const script = top.document.createElement('script') as HTMLScriptElement;
         script.src = (link as HTMLLinkElement).href;
@@ -48,7 +67,7 @@ function init(name: string, options: IDeframeOptions) {
         preDefTempl.innerHTML = document.body.innerHTML;
     }
     if (options.defineFn) {
-        options.defineFn(preDefTempl, options);
+        options.defineFn(top, preDefTempl, options);
     } else {
         //console.log(script!.src)
         class Def extends (<any>top).HTMLElement {
@@ -91,7 +110,7 @@ function init(name: string, options: IDeframeOptions) {
 }
 
 export function deframe(name: string, options: IDeframeOptions = {
-    useShadow: true, attachBehavior: null, bodyContainsTemplate: false
+    useShadow: true, attachBehavior: null, bodyContainsTemplate: false, defineFn: null
 }) {
     init(name, options)
 }

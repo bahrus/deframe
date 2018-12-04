@@ -1,3 +1,22 @@
+function test(win) {
+    try {
+        win.customElements.get('test-ing');
+    }
+    catch (e) {
+        return false;
+    }
+    return true;
+}
+function getTop(win) {
+    if (win.buckStopsHere) {
+        return win;
+    }
+    if (!test(win.parent))
+        return win;
+    if (win === win.parent)
+        return win;
+    return getTop(win.parent);
+}
 function init(name, options) {
     if (document.readyState !== 'complete') {
         document.onreadystatechange = function () {
@@ -7,7 +26,8 @@ function init(name, options) {
         };
         return;
     }
-    const top = window.top;
+    const top = getTop(window);
+    ;
     document.querySelectorAll('link[as="script"][rel="preloadmodule"]').forEach(link => {
         const script = top.document.createElement('script');
         script.src = link.href;
@@ -35,7 +55,7 @@ function init(name, options) {
         preDefTempl.innerHTML = document.body.innerHTML;
     }
     if (options.defineFn) {
-        options.defineFn(preDefTempl, options);
+        options.defineFn(top, preDefTempl, options);
     }
     else {
         //console.log(script!.src)
@@ -77,7 +97,7 @@ function init(name, options) {
     });
 }
 export function deframe(name, options = {
-    useShadow: true, attachBehavior: null, bodyContainsTemplate: false
+    useShadow: true, attachBehavior: null, bodyContainsTemplate: false, defineFn: null
 }) {
     init(name, options);
 }
