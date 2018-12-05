@@ -28,10 +28,12 @@ function init(name, options) {
     }
     const top = getTop(window);
     ;
-    document.querySelectorAll('link[as="script"][rel="preloadmodule"]').forEach(link => {
+    document.querySelectorAll('link[as="script"]').forEach(link => {
         const script = top.document.createElement('script');
         script.src = link.href;
-        script.type = 'module';
+        Array.from(link.attributes).forEach(attr => {
+            script.setAttribute(attr.name, attr.value);
+        });
         top.document.head.appendChild(script);
     });
     let preDefTempl = null;

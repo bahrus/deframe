@@ -41,10 +41,12 @@ function init(name: string, options: IDeframeOptions) {
     }
     const top = getTop(window);;
 
-    document.querySelectorAll('link[as="script"][rel="preloadmodule"]').forEach(link => {
+    document.querySelectorAll('link[as="script"]').forEach(link => {
         const script = top.document.createElement('script') as HTMLScriptElement;
         script.src = (link as HTMLLinkElement).href;
-        script.type = 'module';
+        Array.from(link.attributes).forEach(attr=>{
+            script.setAttribute(attr.name, attr.value);
+        })
         top.document.head!.appendChild(script);
     });
     let preDefTempl: HTMLTemplateElement | null = null;

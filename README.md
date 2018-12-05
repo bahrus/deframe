@@ -150,11 +150,10 @@ To do this, add a preload tag in your web component definition:
 
 ```html
 <head>
-<link rel="preloadmodule" href="p-d.iife.js" as="script">
+<link rel="kvetch" type="module" href="p-d.iife.js" as="script">
 </head>
 ```
 
-This arrangement works nicely:  The script tag is only loaded once -- In the referring page if there is one, otherwise in the standalone page.
 
 ## Options
 
