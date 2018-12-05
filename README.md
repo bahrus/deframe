@@ -167,7 +167,7 @@ deframe('my-name', {useShadow: false})
 
 ### Using a template
 
-In some scenarios, the benefits of initial display that the iframe provides appears to be outweighed by the CPU costs of rendering and then transferring things from the iframe into the top window.  To alleviate that cost, you can wrap the contents of the body tag inside a template:
+In some scenarios, the benefits of initial display that the iframe provides appears to be outweighed by the CPU (and potentially network) costs of rendering and then transferring things from the iframe into the top window.  To alleviate that cost, you can wrap the contents of the body tag inside a template:
 
 ```html
 <body>
