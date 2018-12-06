@@ -1,6 +1,6 @@
 {
   "name": "deframe",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Define a web component via an iFrame",
   "main": "deframe.js",
   "dependencies": {
