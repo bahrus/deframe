@@ -3,7 +3,7 @@
 
 <a href="https://nodei.co/npm/deframe/"><img src="https://nodei.co/npm/deframe.png"></a>
 
-<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.15/dist/deframe.min.js?compression=gzip">
+<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.18/dist/deframe.min.js?compression=gzip">
 
 <a href="https://bahrus.github.io/deframe/dev.html">Demo</a>
 
@@ -108,7 +108,7 @@ In fact, I mentioned a few things already that I'd like to take a second look at
 
 Hopefully when (if?) HTML Modules become a thing, these difficult tradeoffs will seem laughably quaint.
 
-NB:  iFrames are also quite a bit more restrictive as far as cross-domain integration. 
+**NB I**:  iFrames are also quite a bit more restrictive as far as cross-domain integration. 
 
 ## Defining your own class
 
@@ -133,6 +133,7 @@ In many cases, there's no need to define your own custom element class.  deframe
       });
     </script>
 ```
+**NB II** Referincing mixins when defining your class could involve some fancy asynchronous footwork.
 
 ## Examples:
 

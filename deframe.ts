@@ -104,11 +104,11 @@ function init(name: string, options: IDeframeOptions) {
         top.customElements.define(name, Def);
     }
 
-    window.parent.document.querySelectorAll('iframe').forEach(element => {
-        if (element.contentWindow === window) {
-            element.remove();
-        }
-    });
+    // window.parent.document.querySelectorAll('iframe').forEach(element => {
+    //     if (element.contentWindow === window) {
+    //         element.remove();
+    //     }
+    // });
 }
 
 export function deframe(name: string, options: IDeframeOptions = {
