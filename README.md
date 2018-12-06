@@ -3,7 +3,7 @@
 
 <a href="https://nodei.co/npm/deframe/"><img src="https://nodei.co/npm/deframe.png"></a>
 
-<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.18/dist/deframe.min.js?compression=gzip">
+<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.19/dist/deframe.min.js?compression=gzip">
 
 <a href="https://bahrus.github.io/deframe/dev.html">Demo</a>
 
