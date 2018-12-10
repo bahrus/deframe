@@ -3,6 +3,7 @@
   "version": "0.0.19",
   "description": "Define a web component via an iFrame",
   "main": "deframe.js",
+  "module": "deframe.js",
   "dependencies": {
     "xtal-latx": "0.0.69"
   },

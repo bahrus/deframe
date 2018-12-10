@@ -41,7 +41,7 @@ function init(name, options) {
         preDefTempl = document.body.firstElementChild;
     if (window === top) {
         const ab = options.attachBehavior;
-        if (ab !== null) {
+        if (ab) {
             document.querySelectorAll(ab.selector).forEach((el) => {
                 ab.attach(el, top);
             });

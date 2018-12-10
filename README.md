@@ -206,3 +206,6 @@ So one solid solution, if using separate files for CSS  would be to use server s
 
 But now we're talking loud keyboard clacking and exotic npm installations just to produce a Hello world page.  Unacceptable!  So to make things work with minimal fuss,  you can reference deframeDev.js instead of deframe, which will properly resolve the css file.  [TODO] A recommended tool for embedding the css during optimization is forthcoming.  (Maybe polymer tools does this already?)
 
+## Specify where to stop
+
+iFrames can be nested.  By default, deframe searches for the highest containing window where it has full access.  If you want deframe to stop before it gets to that highest level, set window.theBuckStopsHere = true.

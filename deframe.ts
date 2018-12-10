@@ -53,7 +53,7 @@ function init(name: string, options: IDeframeOptions) {
     if (options.bodyContainsTemplate) preDefTempl = document.body.firstElementChild as HTMLTemplateElement;
     if (window === top) {
         const ab = options.attachBehavior;
-        if (ab !== null) {
+        if (ab) {
             document.querySelectorAll(ab.selector).forEach((el: any) => {
                 ab.attach(el, top);
             })
