@@ -5,12 +5,13 @@
   "main": "deframe.js",
   "module": "deframe.js",
   "dependencies": {
-    "xtal-latx": "0.0.69"
+    "xtal-latx": "0.0.86",
+    "xtal-salt": "0.0.14"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.0.0",
-    "jiife": "0.0.7",
-    "tape": "^4.9.1",
+    "@webcomponents/webcomponentsjs": "2.2.1",
+    "jiife": "0.0.10",
+    "tape": "4.9.1",
     "@types/tape": "4.2.32",
     "xtal-test": "0.0.10"
   },
