@@ -1,6 +1,6 @@
 {
   "name": "deframe",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Define a web component via an iFrame",
   "main": "deframe.js",
   "module": "deframe.js",
