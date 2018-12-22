@@ -1,4 +1,4 @@
-export function define(win, name) {
+export function deframe(win, name) {
     document.querySelectorAll('link[as="script"]').forEach(link => {
         const script = top.document.createElement('script');
         script.src = link.href;
@@ -27,4 +27,4 @@ export function define(win, name) {
     }
     win.customElements.define(name, Def);
 }
-//# sourceMappingURL=open-iframe.js.map
+//# sourceMappingURL=deframe-variation-1.js.map

@@ -1,4 +1,4 @@
-export function define(win: Window, name: string){
+export function deframe(win: Window, name: string){
     document.querySelectorAll('link[as="script"]').forEach(link => {
         const script = top.document.createElement('script') as HTMLScriptElement;
         script.src = (link as HTMLLinkElement).href;

@@ -3,11 +3,13 @@
 
 <a href="https://nodei.co/npm/deframe/"><img src="https://nodei.co/npm/deframe.png"></a>
 
-<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.19/dist/deframe.min.js?compression=gzip">
+Main:  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.21/dist/deframe.min.js?compression=gzip">
+
+Variation 1:  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.21/dist/deframe-variation-1.min.js?compression=gzip">
 
 <a href="https://bahrus.github.io/deframe/dev.html">Demo</a>
 
-# deframe
+# deframe and variations
 
 ## Purpose
 
@@ -209,3 +211,17 @@ But now we're talking loud keyboard clacking and exotic npm installations just t
 ## Specify where to stop
 
 iFrames can be nested.  By default, deframe searches for the highest containing window where it has full access.  If you want deframe to stop before it gets to that highest level, set window.theBuckStopsHere = true.
+
+# Opinionated Variations
+
+Adding the options mentioned above results in a gzipped size of about 716 B, and requires a certain amount of setup in some cases.
+
+But there are some patterns that will appear quite common, for which we create specialized versions (or variations).
+
+## Variation 1  Codeless Web components with significant CSS and dynamic HTML markup
+
+When one examines the most [popular code pens](https://codepen.io/pens/), one is struck how many of them use no JS.  Instead, what you have is a significant amount of HTML markup, which shouldn't be hardcoded in the web component, but should be transported in via light children.
+
+The deframe function found in deframe-variation-1.js specializes in this use case.  It makes some assumptions (yes to Shadow DOM for example).
+
+It is only 500 Bytes minified and gzipped.  You can see it in action [here](https://bahrus.github.io/honeycomb/honeycombtest.html), based on this [codepen](https://codepen.io/gzuzkstro/pen/ebdxZQ).
