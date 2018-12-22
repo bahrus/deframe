@@ -5,7 +5,7 @@
 
 Main:  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.21/dist/deframe.min.js?compression=gzip">
 
-Variation 1:  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.21/dist/deframe-variation-1.min.js?compression=gzip">
+Variation 1:  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/deframe@0.0.22/dist/deframe-variation-1.min.js?compression=gzip">
 
 <a href="https://bahrus.github.io/deframe/dev.html">Demo</a>
 

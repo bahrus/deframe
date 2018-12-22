@@ -1,4 +1,4 @@
-export function deframe(win, name) {
+export function deframe(win, name, myTemplate = null) {
     document.querySelectorAll('link[as="script"]').forEach(link => {
         const script = top.document.createElement('script');
         script.src = link.href;
@@ -11,7 +11,7 @@ export function deframe(win, name) {
         constructor() {
             super();
             this.attachShadow({ mode: 'open' });
-            const template = document.body.firstElementChild;
+            const template = myTemplate === null ? document.body.firstElementChild : myTemplate;
             this.shadowRoot.appendChild(template.content.cloneNode(true));
             const target = this.shadowRoot.querySelector('#content');
             this.shadowRoot.querySelector('[name="template"]').addEventListener('slotchange', (event) => {

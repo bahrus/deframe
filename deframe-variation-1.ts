@@ -1,4 +1,4 @@
-export function deframe(win: Window, name: string){
+export function deframe(win: Window, name: string, myTemplate: HTMLTemplateElement | null = null){
     document.querySelectorAll('link[as="script"]').forEach(link => {
         const script = top.document.createElement('script') as HTMLScriptElement;
         script.src = (link as HTMLLinkElement).href;
@@ -11,7 +11,7 @@ export function deframe(win: Window, name: string){
         constructor() {
             super();
             this.attachShadow({ mode: 'open' });
-            const template = document.body.firstElementChild as HTMLTemplateElement
+            const template = myTemplate === null ? document.body.firstElementChild as HTMLTemplateElement : myTemplate;
             this.shadowRoot!.appendChild(template.content.cloneNode(true));
             const target = this.shadowRoot!.querySelector('#content');
         
