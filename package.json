@@ -5,15 +5,15 @@
   "main": "deframe.js",
   "module": "deframe.js",
   "dependencies": {
-    "xtal-latx": "0.0.86",
-    "xtal-salt": "0.0.14"
+    "xtal-latx": "0.0.88",
+    "xtal-salt": "0.0.15"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "2.2.1",
-    "jiife": "0.0.10",
-    "tape": "4.9.1",
-    "@types/tape": "4.2.32",
-    "xtal-test": "0.0.10"
+    "@webcomponents/webcomponentsjs": "2.2.10",
+    "jiife": "0.0.12",
+    "tape": "4.10.2",
+    "@types/tape": "4.2.33",
+    "xtal-test": "0.0.19"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
