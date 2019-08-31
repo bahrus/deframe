@@ -19,7 +19,7 @@ The W3C Web Component working group is taking their sweet time coming up with a 
 
 Focusing on the decade we are in, what are we to do when building web components that are 99% HTML / CSS and 1% JavaScript?  Many seem comfortable just joining the everything-is-a-string-anyway crowd, and just encoding everything in ~~JavaScript~~ ~~TypeScript~~ ~~TSX~~ ~~ReasonML~~ [BrainFuckML](https://github.com/verdie-g/brainfuck2wasm).
 
-##NB:##  ReasonML is an interesting language with prominent advocates I deeply respect.  I didn't intend to belittle their work or the ReasonML community.   And I'm quite excited about the doors WebAssembly opens up. 
+##NB:##  ReasonML is an interesting language with prominent advocates I deeply respect.  I didn't intend to belittle their work or the ReasonML community.   And I'm quite excited about the doors WebAssembly opens up. Apologies.
  
 
 But what if the web component is actually a dynamic, server-centric business component built with Ruby on Rails?  What if you have philosophical issues with giving up on HTML and CSS mime types based on such quaint notions as performance optimization?
